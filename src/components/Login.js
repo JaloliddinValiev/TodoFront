@@ -3,10 +3,27 @@ import React, { useState } from 'react';
 const Login = ({ showSignUp, setShowSignUp }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [loginResult, setLoginResult] = useState('');
 
-  const handleLogin = () => {
-    // Perform your login logic here
-    console.log('Logged in with', username, password);
+  const handleLogin = async () => {
+    try {
+      const response = await fetch("http://localhost:8080/api/v1/todo/login", {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ "username":username, "password":password })
+      });
+
+      if (response.ok) {
+        console.log('Login successful!');
+      } else {
+        console.log('Login failed');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      setLoginResult('An error occurred while logging in');
+    }
   };
 
   return (

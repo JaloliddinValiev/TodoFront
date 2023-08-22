@@ -1,19 +1,21 @@
 import React, { useState } from 'react';
-import Main from './components/Main';
 import Login from './components/Login';
 import SignUp from './components/SignUp';
+import Main from './components/Main';
 
 function App() {
   const [showSignUp, setShowSignUp] = useState(false);
 
   return (
     <div className="App">
-      {/* {showSignUp ? (
+      {showSignUp ? (
         <SignUp showSignUp={showSignUp} setShowSignUp={setShowSignUp} />
       ) : (
         <Login showSignUp={showSignUp} setShowSignUp={setShowSignUp} />
-      )} */}
-      <Main />
+      )}
+      if (boolhehe) {
+        <Main/>
+      }
     </div>
   );
 }
